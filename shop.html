@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliteone Shop</title>
+    <link rel="stylesheet" href="style.css">
+
+  
+</head>
+    
+<body>
+<div class="header-bar">
+    <h1>Eliteone Shop's Products</h1>
+
+    <input type="text"
+           id="searchInput"
+           class="search-box"
+           placeholder="Search..."
+           onkeyup="searchProduct()">
+</div>
+
+<div class="product-container">
+
+    <div class="product">
+        <h3>Smartphone iPhone 17</h3>
+        <img src="iphone.jfif" alt="iphone17">
+        <p>Price: 1,500,000 Frw</p>
+        <a href="buy.html?name=iPhone%2017&price=1500000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+
+    <div class="product">
+        <h3>Laptop HP</h3>
+        <img src="hp.jfif" alt="hp">
+        <p>Price: 400,000 Frw</p>
+        <a href="buy.html?name=HP%20Laptop&price=400000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+
+    <div class="product">
+        <h3>Headphones</h3>
+        <img src="head.jfif" alt="headphones">
+        <p>Price: 20,000 Frw</p>
+        <a href="buy.html?name=Headphones&price=20000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+
+    <div class="product">
+        <h3>Samsung S24</h3>
+        <img src="sum.jfif" alt="samsung">
+        <p>Price: 1,000,000 Frw</p>
+        <a href="buy.html?name=Samsung%20S24&price=1000000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+      <div class="product">
+        <h3>Samsung S22</h3>
+        <img src="s22.jfif" alt="samsung">
+        <p>Price: 800,000 Frw</p>
+        <a href="buy.html?name=Samsung%20S24&price=1000000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+      <div class="product">
+        <h3>Samsung z flip7 </h3>
+        <img src="flip.jfif" alt="samsung">
+        <p>Price: 1,000,000 Frw</p>
+        <a href="buy.html?name=Samsung%20S24&price=1000000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+      <div class="product">
+        <h3>pixel 9A</h3>
+        <img src="pix.jfif" alt="samsung">
+        <p>Price: 800,000 Frw</p>
+        <a href="buy.html?name=Samsung%20S24&price=1000000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+      <div class="product">
+        <h3>sony xpl 10</h3>
+        <img src="sony.jfif" alt="samsung">
+        <p>Price: 150,000 Frw</p>
+        <a href="buy.html?name=Samsung%20S24&price=1000000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+
+    <div class="product">
+        <h3>Other Product</h3>
+        <img src="images.jfif" alt="product">
+        <p>Price: 50,000 Frw</p>
+        <a href="buy.html?name=Other%20Product&price=50000">
+            <button class="shop-button">Buy Now</button>
+        </a>
+    </div>
+
+</div>
+
+<a href="home.html">
+    <button class="shop-button">Back to Home</button>
+</a>
+
+<p>&copy; all rights reserved 2026<br>
+tel: <b>0796200840</b></p>
+<!-- SEARCH SCRIPT -->
+<script>
+function searchProduct() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let products = document.getElementsByClassName("product");
+
+    for (let i = 0; i < products.length; i++) {
+        let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+
+        if (name.includes(input)) {
+            products[i].style.display = "block";
+        } else {
+            products[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
