@@ -1,31 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ELITE1ne shop</title>
+    <title>ELITE's Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1>ELITE's Shop</h1>
 
-<p><b>Welcome to ELITE's Shop</b></p>
-<p><i>Your trusted online buying and selling technological gadget platform.</i></p>
+<div class="welcome-section">
+    <p><b>Welcome to ELITE's Shop</b></p>
+    <p><i>Your trusted online buying and selling technological gadget platform.</i></p>
+</div>
 
-<h2>Some products we have</h2>
+<div class="role-cards">
 
-<ul>
-    <li>Smartphone</li>
-    <li>Laptop</li>
-    <li>Headphones</li>
-    <li>all technological device</li>
-</ul>
+    <!-- BUYER CARD -->
+    <a href="shop.html" class="role-card buyer">
+        <div class="icon">🛒</div>
+        <h2>I'm a Buyer</h2>
+        <p>Browse and purchase the latest tech gadgets — phones, laptops, headphones and more.</p>
+        <button style="margin-top:15px;">Enter Shop</button>
+    </a>
 
-<a href="shop.html">
-    <button class="shop-button">Start Shopping</button>
-</a>
+    <!-- SELLER CARD -->
+    <div class="role-card seller" onclick="openSellerLogin()">
+        <div class="icon">🏪</div>
+        <h2>I'm a Seller</h2>
+        <p>Log in to manage your products, add new items, and run your store.</p>
+        <button style="margin-top:15px; background:blue; color:gold;">Seller Login</button>
+    </div>
+
+</div>
 
 <p>&copy; all rights reserved 2026<br>
 tel: <b>0796200840</b></p>
+
+<!-- SELLER LOGIN MODAL -->
+<div class="modal-overlay" id="sellerModal">
+    <div class="modal">
+        <button class="close-btn" onclick="closeSellerLogin()">✕</button>
+        <div class="icon">🔐</div>
+        <h2>Seller Login</h2>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <p class="error-msg" id="errorMsg">❌ Incorrect username or password.</p>
+        <button class="login-btn" onclick="sellerLogin()">Login</button>
+    </div>
+</div>
+
+<script>
+    // --- SELLER CREDENTIALS (change these to your own) ---
+    const SELLER_USERNAME = "elite1";
+    const SELLER_PASSWORD = "shop2026";
+    // -----------------------------------------------------
+
+    function openSellerLogin() {
+        document.getElementById("sellerModal").classList.add("active");
+    }
+
+    function closeSellerLogin() {
+        document.getElementById("sellerModal").classList.remove("active");
+        document.getElementById("errorMsg").style.display = "none";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+
+    function sellerLogin() {
+        const user = document.getElementById("username").value.trim();
+        const pass = document.getElementById("password").value.trim();
+
+        if (user === SELLER_USERNAME && pass === SELLER_PASSWORD) {
+            sessionStorage.setItem("sellerLoggedIn", "true");
+            window.location.href = "seller.html";
+        } else {
+            document.getElementById("errorMsg").style.display = "block";
+        }
+    }
+
+    // Allow pressing Enter to login
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" && document.getElementById("sellerModal").classList.contains("active")) {
+            sellerLogin();
+        }
+    });
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
