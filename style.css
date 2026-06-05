@@ -80,15 +80,13 @@ input, select {
 a {
     text-decoration: none;
 }
-
-body {
+body{
     background-image: url("e.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.message-box {
+.message-box{
     display: none;
     background-color: blue;
     color: gold;
@@ -99,21 +97,21 @@ body {
     font-weight: bold;
     box-shadow: 0px 0px 10px gray;
 }
-
 /* SEARCH STYLE */
-.top-bar {
+.top-bar{
     display: flex;
     justify-content: flex-end;
     padding: 10px 20px;
 }
 
-.search-box {
+.search-box{
     padding: 10px;
     width: 250px;
     border: 2px solid blue;
     border-radius: 8px;
     font-size: 16px;
 }
+
 
 /* ===== HOME PAGE - ROLE CARDS ===== */
 .welcome-section {
@@ -261,4 +259,50 @@ body {
 .seller-box h2 {
     color: blue;
 }
+
+.seller-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto;
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: gold;
+    color: blue;
+    border: none;
+    font-weight: bold;
+}
+
+.active-tab {
+    background: blue;
+    color: gold;
+}
+
+.badge {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.order-card {
+    background: whitesmoke;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid blue;
+}
+
+.order-done {
+    border-left: 5px solid green;
+    opacity: 0.7;
 }

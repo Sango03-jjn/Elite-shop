@@ -3,14 +3,11 @@
 <head>
     <title>Eliteone Shop</title>
     <link rel="stylesheet" href="style.css">
-
-  
 </head>
     
 <body>
 <div class="header-bar">
     <h1>Eliteone Shop's Products</h1>
-
     <input type="text"
            id="searchInput"
            class="search-box"
@@ -18,7 +15,7 @@
            onkeyup="searchProduct()">
 </div>
 
-<div class="product-container">
+<div class="product-container" id="productContainer">
 
     <div class="product">
         <h3>Smartphone iPhone 17</h3>
@@ -55,35 +52,39 @@
             <button class="shop-button">Buy Now</button>
         </a>
     </div>
-      <div class="product">
+
+    <div class="product">
         <h3>Samsung S22</h3>
         <img src="s22.jfif" alt="samsung">
         <p>Price: 800,000 Frw</p>
-        <a href="buy.html?name=Samsung%20S24&price=1000000">
+        <a href="buy.html?name=Samsung%20S22&price=800000">
             <button class="shop-button">Buy Now</button>
         </a>
     </div>
-      <div class="product">
-        <h3>Samsung z flip7 </h3>
+
+    <div class="product">
+        <h3>Samsung Z Flip 7</h3>
         <img src="flip.jfif" alt="samsung">
         <p>Price: 1,000,000 Frw</p>
-        <a href="buy.html?name=Samsung%20S24&price=1000000">
+        <a href="buy.html?name=Samsung%20Z%20Flip%207&price=1000000">
             <button class="shop-button">Buy Now</button>
         </a>
     </div>
-      <div class="product">
-        <h3>pixel 9A</h3>
-        <img src="pix.jfif" alt="samsung">
+
+    <div class="product">
+        <h3>Pixel 9A</h3>
+        <img src="pix.jfif" alt="pixel">
         <p>Price: 800,000 Frw</p>
-        <a href="buy.html?name=Samsung%20S24&price=1000000">
+        <a href="buy.html?name=Pixel%209A&price=800000">
             <button class="shop-button">Buy Now</button>
         </a>
     </div>
-      <div class="product">
-        <h3>sony xpl 10</h3>
-        <img src="sony.jfif" alt="samsung">
+
+    <div class="product">
+        <h3>Sony XPL 10</h3>
+        <img src="sony.jfif" alt="sony">
         <p>Price: 150,000 Frw</p>
-        <a href="buy.html?name=Samsung%20S24&price=1000000">
+        <a href="buy.html?name=Sony%20XPL%2010&price=150000">
             <button class="shop-button">Buy Now</button>
         </a>
     </div>
@@ -105,22 +106,37 @@
 
 <p>&copy; all rights reserved 2026<br>
 tel: <b>0796200840</b></p>
-<!-- SEARCH SCRIPT -->
+
 <script>
-function searchProduct() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let products = document.getElementsByClassName("product");
+    function loadSellerProducts() {
+        const products = JSON.parse(localStorage.getItem("products") || "[]");
+        const container = document.getElementById("productContainer");
 
-    for (let i = 0; i < products.length; i++) {
-        let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        products.forEach(function(p) {
+            container.innerHTML += `
+                <div class="product">
+                    <h3>${p.name}</h3>
+                    <img src="${p.image}" alt="${p.name}">
+                    <p>Price: ${Number(p.price).toLocaleString()} Frw</p>
+                    <a href="buy.html?name=${encodeURIComponent(p.name)}&price=${p.price}">
+                        <button class="shop-button">Buy Now</button>
+                    </a>
+                </div>
+            `;
+        });
+    }
 
-        if (name.includes(input)) {
-            products[i].style.display = "block";
-        } else {
-            products[i].style.display = "none";
+    function searchProduct() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let products = document.getElementsByClassName("product");
+
+        for (let i = 0; i < products.length; i++) {
+            let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+            products[i].style.display = name.includes(input) ? "block" : "none";
         }
     }
-}
+
+    loadSellerProducts();
 </script>
 
 </body>

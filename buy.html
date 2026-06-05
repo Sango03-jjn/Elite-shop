@@ -10,28 +10,22 @@
 
 <div class="buy-container">
 
-<form onsubmit="return showMessage()">
+<form onsubmit="return placeOrder()">
 
     <label>Full Name</label>
-    <input type="text" placeholder="Enter your name" required>
+    <input type="text" id="buyerName" placeholder="Enter your name" required>
 
     <label>Email</label>
-    <input type="email" placeholder="Enter your email" required>
+    <input type="email" id="buyerEmail" placeholder="Enter your email" required>
 
-    <label>Select Product</label>
-    <select required>
-        <option value="null">iPhone 17</option>
-        <option>HP Laptop</option>
-        <option>Headphones</option>
-        <option>Samsung S24</option>
-        <option>Other Product</option>
-    </select>
+    <label>Product</label>
+    <input type="text" id="buyerProduct" readonly>
 
     <label>Number of Products</label>
-    <input type="number" min="1" value="1" required>
+    <input type="number" id="buyerQty" min="1" value="1" required>
 
     <label>Delivery Address</label>
-    <input type="text" placeholder="Enter your address" required>
+    <input type="text" id="buyerAddress" placeholder="Enter your address" required>
 
     <button class="buy-button" type="submit">Place Order</button>
 
@@ -41,19 +35,41 @@
 <a href="shop.html">Back to Shop</a>
 
 </div>
+
 <div id="message-box" class="message-box">
-    Order placed successfully!
+    ✅ Order placed successfully!
 </div>
+
 <script>
-function showMessage(){
-    document.getElementById("message-box").style.display = "block";
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name") || "";
+    const price = params.get("price") || "";
+    document.getElementById("buyerProduct").value = name + (price ? " - " + Number(price).toLocaleString() + " Frw" : "");
 
-    setTimeout(function(){
-        document.getElementById("message-box").style.display = "none";
-    }, 3000);
+    function placeOrder() {
+        const order = {
+            id: Date.now(),
+            buyerName: document.getElementById("buyerName").value,
+            email: document.getElementById("buyerEmail").value,
+            product: name,
+            price: price,
+            quantity: document.getElementById("buyerQty").value,
+            address: document.getElementById("buyerAddress").value,
+            date: new Date().toLocaleString(),
+            status: "new"
+        };
 
-    return false;
-}
+        const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+        orders.push(order);
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+        document.getElementById("message-box").style.display = "block";
+        setTimeout(function() {
+            document.getElementById("message-box").style.display = "none";
+        }, 3000);
+
+        return false;
+    }
 </script>
 </body>
 </html>

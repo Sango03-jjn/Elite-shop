@@ -15,6 +15,7 @@
 
 <div class="role-cards">
 
+    <!-- BUYER CARD -->
     <a href="shop.html" class="role-card buyer">
         <div class="icon">🛒</div>
         <h2>I'm a Buyer</h2>
@@ -22,6 +23,7 @@
         <button style="margin-top:15px;">Enter Shop</button>
     </a>
 
+    <!-- SELLER CARD -->
     <div class="role-card seller" onclick="openSellerLogin()">
         <div class="icon">🏪</div>
         <h2>I'm a Seller</h2>
@@ -48,10 +50,10 @@ tel: <b>0796200840</b></p>
 </div>
 
 <script>
-    
+    // --- SELLER CREDENTIALS (change these to your own) ---
     const SELLER_USERNAME = "elite1";
-    const SELLER_PASSWORD = "2525";
-
+    const SELLER_PASSWORD = "shop2026";
+    // -----------------------------------------------------
 
     function openSellerLogin() {
         document.getElementById("sellerModal").classList.add("active");
@@ -76,16 +78,13 @@ tel: <b>0796200840</b></p>
         }
     }
 
-
+    // Allow pressing Enter to login
     document.addEventListener("keydown", function(e) {
         if (e.key === "Enter" && document.getElementById("sellerModal").classList.contains("active")) {
             sellerLogin();
         }
     });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
