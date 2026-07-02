@@ -15,6 +15,15 @@
            onkeyup="searchProduct()">
 </div>
 
+<div class="category-bar">
+    <select id="categorySelect" class="search-box" onchange="filterByCategory()">
+        <option value="all">All Categories</option>
+        <option value="phones">Phones</option>
+        <option value="laptops">Laptops</option>
+        <option value="accessories">Accessories</option>
+    </select>
+</div>
+
 <div class="product-container" id="productContainer">
 
     <div class="product">
@@ -133,6 +142,29 @@ tel: <b>0796200840</b></p>
         for (let i = 0; i < products.length; i++) {
             let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
             products[i].style.display = name.includes(input) ? "block" : "none";
+        }
+    }
+
+    const categoryKeywords = {
+        phones: ["iphone", "samsung", "pixel", "sony", "phone", "flip"],
+        laptops: ["laptop", "hp", "macbook", "dell", "lenovo"],
+        accessories: ["headphone", "charger", "case", "cable", "watch"]
+    };
+
+    function filterByCategory() {
+        const selected = document.getElementById("categorySelect").value;
+        const products = document.getElementsByClassName("product");
+
+        for (let p of products) {
+            const name = p.getElementsByTagName("h3")[0].innerText.toLowerCase();
+
+            if (selected === "all") {
+                p.style.display = "block";
+            } else {
+                const keywords = categoryKeywords[selected] || [];
+                const matches = keywords.some(k => name.includes(k));
+                p.style.display = matches ? "block" : "none";
+            }
         }
     }
 
