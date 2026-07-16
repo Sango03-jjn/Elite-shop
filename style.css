@@ -97,7 +97,7 @@ body{
     font-weight: bold;
     box-shadow: 0px 0px 10px gray;
 }
-/* SEARCH STYLE */
+
 .top-bar{
     display: flex;
     justify-content: flex-end;
@@ -113,7 +113,6 @@ body{
 }
 
 
-/* ===== HOME PAGE - ROLE CARDS ===== */
 .welcome-section {
     margin: 30px auto;
 }
@@ -167,7 +166,6 @@ body{
     border-top: 5px solid blue;
 }
 
-/* ===== SELLER LOGIN MODAL ===== */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -246,7 +244,6 @@ body{
     display: none;
 }
 
-/* ===== SELLER DASHBOARD ===== */
 .seller-box {
     background: white;
     width: 400px;
