@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>🏪 Seller Dashboard</h1>
+<h1>🏪 Seller Dashboard</h1>    <button onclick="logout()">🚪 Logout</button>
 
 <div class="seller-tabs">
     <button onclick="showTab('addTab')" id="btnAdd" class="tab-btn active-tab">➕ Add Product</button>
@@ -37,7 +37,7 @@
 </div>
 
 <br>
-<button onclick="logout()">🚪 Logout</button>
+
 
 <script>
     if (sessionStorage.getItem("sellerLoggedIn") !== "true") {
@@ -106,7 +106,7 @@
                     <p><b>🛒 Product:</b> ${o.product} — ${Number(o.price).toLocaleString()} Frw</p>
                     <p><b>👤 Buyer:</b> ${o.buyerName} (${o.email})</p>
                     <p><b>📦 Quantity:</b> ${o.quantity}</p>
-                    <p><b>📍 Address:</b> ${o.address}</p>
+                    <p><b>🚚 Address:</b> ${o.address}</p>
                     <p><b>🕐 Date:</b> ${o.date}</p>
                     <p><b>Status:</b> ${o.status === 'done' ? '✅ Done' : '🔴 New'}</p>
                     ${o.status === 'new' ? `<button onclick="markDone(${realIndex})" style="background:green;color:white;">✅ Mark as Done</button>` : ''}
