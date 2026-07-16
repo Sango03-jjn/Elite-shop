@@ -85,6 +85,23 @@ tel: <b>0796200840</b></p>
             sellerLogin();
         }
     });
+     function displaytime() {
+
+        var mydates = new Date();
+        var time = mydates.getHours();
+       var greeting;
+       if (time < 12) {
+      greeting = "Good Morning"
+       }
+     else if(time<18) {
+           greeting="Good Aftenoon"
+        }
+        else {
+            greeting="Good Evening"
+        }
+        document.getElementById("greeting").textContent= greeting
+    }
+    displaytime();
 </script>
 
 </body>
