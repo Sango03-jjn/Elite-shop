@@ -313,3 +313,35 @@ body{
     margin: 0 auto 10px;
     background: white;
 }
+.header-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background-color: blue;
+    padding: 0 30px;
+}
+
+.header-bar h1 {
+    grid-column: 2;
+    text-align: center;
+}
+
+.header-bar .shop-button {
+    grid-column: 3;
+    justify-self: end;
+    background-color: gold;
+    color: blue;
+}
+
+.category-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    gap: 15px;
+}
+
+.category-bar .search-box {
+    width: auto;
+    max-width: 250px;
+}
